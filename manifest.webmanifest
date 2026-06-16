@@ -1,0 +1,21 @@
+{
+  "name": "輕量版生活費用分攤器",
+  "short_name": "費用分攤器",
+  "description": "免註冊、免後端、用完即走的生活費用分攤工具。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f4",
+  "theme_color": "#0f766e",
+  "orientation": "portrait-primary",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "./icons/app-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "utilities", "productivity"]
+}

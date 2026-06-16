@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="免註冊、免後端、用完即走的生活費用分攤工具。" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="費用分攤器" />
+    <title>輕量版生活費用分攤器</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/app-icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icons/app-icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Splitwise Minimalist</p>
+          <h1>輕量版生活費用分攤器</h1>
+        </div>
+        <div class="topbar-actions">
+          <a class="ghost-link" href="./privacy.html">隱私權政策</a>
+          <button class="ghost-button" id="copy-share-url" type="button">分享網址</button>
+          <button class="ghost-button danger" id="reset-demo" type="button">清空</button>
+        </div>
+      </header>
+      <p class="privacy-note">分享網址會包含活動、帳目與你填入的銀行帳號資訊，只建議傳給同場活動成員。</p>
+
+      <nav class="mobile-tabs" aria-label="主要區塊">
+        <button class="tab-button active" data-target="section-activity" type="button">活動</button>
+        <button class="tab-button" data-target="section-expense" type="button">記帳</button>
+        <button class="tab-button" data-target="section-list" type="button">帳目</button>
+        <button class="tab-button" data-target="section-settle" type="button">結算</button>
+      </nav>
+
+      <div class="layout-grid">
+        <section class="panel mobile-section active" id="section-activity">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Activity</p>
+              <h2>活動與成員</h2>
+            </div>
+          </div>
+
+          <label class="field-label" for="activity-name">活動名稱</label>
+          <input id="activity-name" class="text-input" type="text" placeholder="例如：週末聚餐" />
+
+          <form class="member-form" id="member-form">
+            <div>
+              <label class="field-label" for="member-name">新增成員</label>
+              <input id="member-name" class="text-input" type="text" placeholder="姓名" autocomplete="off" />
+            </div>
+            <button class="primary-button" type="submit">新增</button>
+          </form>
+
+          <div class="member-list" id="member-list"></div>
+        </section>
+
+        <section class="panel mobile-section" id="section-expense">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Expense</p>
+              <h2 id="expense-form-title">新增帳目</h2>
+            </div>
+            <button class="ghost-button hidden" id="cancel-edit" type="button">取消編輯</button>
+          </div>
+
+          <form id="expense-form" class="expense-form">
+            <input type="hidden" id="editing-expense-id" />
+
+            <div class="two-column">
+              <div>
+                <label class="field-label" for="expense-title">支出名稱</label>
+                <input id="expense-title" class="text-input" type="text" placeholder="例如：晚餐" required />
+              </div>
+              <div>
+                <label class="field-label" for="expense-amount">總金額</label>
+                <input id="expense-amount" class="text-input" type="number" inputmode="numeric" min="0" step="1" placeholder="0" required />
+              </div>
+            </div>
+
+            <label class="field-label" for="expense-payer">付款人</label>
+            <select id="expense-payer" class="text-input" required></select>
+
+            <div class="field-group">
+              <span class="field-label">分攤方式</span>
+              <div class="segmented-control" role="radiogroup" aria-label="分攤方式">
+                <label>
+                  <input type="radio" name="split-mode" value="equal" checked />
+                  <span>均分</span>
+                </label>
+                <label>
+                  <input type="radio" name="split-mode" value="selected_equal" />
+                  <span>指定人</span>
+                </label>
+                <label>
+                  <input type="radio" name="split-mode" value="itemized_proportional" />
+                  <span>個別金額</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="split-box" id="selected-split-box">
+              <div class="split-box-heading">
+                <span>參與分攤成員</span>
+                <button class="link-button" id="select-all-members" type="button">全選</button>
+              </div>
+              <div class="checkbox-grid" id="participant-options"></div>
+            </div>
+
+            <div class="split-box hidden" id="itemized-split-box">
+              <div class="split-box-heading">
+                <span>個別金額與公共費用</span>
+                <span class="muted" id="itemized-remainder">尚未分配 $0</span>
+              </div>
+              <div class="itemized-list" id="itemized-list"></div>
+              <label class="field-label" for="shared-extra">公共費用</label>
+              <input id="shared-extra" class="text-input" type="number" inputmode="numeric" min="0" step="1" value="0" />
+            </div>
+
+            <button class="primary-button wide" type="submit">儲存帳目</button>
+          </form>
+        </section>
+
+        <section class="panel mobile-section" id="section-list">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Records</p>
+              <h2>帳目列表</h2>
+            </div>
+          </div>
+          <div class="expense-list" id="expense-list"></div>
+        </section>
+
+        <section class="panel mobile-section" id="section-settle">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Settlement</p>
+              <h2>最佳化結算</h2>
+            </div>
+            <button class="primary-button" id="copy-line-message" type="button">複製 LINE 文字</button>
+          </div>
+          <div class="summary-grid" id="balance-summary"></div>
+          <div class="settlement-list" id="settlement-list"></div>
+        </section>
+      </div>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>

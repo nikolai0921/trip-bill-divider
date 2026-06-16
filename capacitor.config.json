@@ -1,0 +1,9 @@
+{
+  "appId": "tw.splitwise.minimalist",
+  "appName": "輕量版生活費用分攤器",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}

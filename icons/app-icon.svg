@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Splitwise Minimalist icon">
+  <rect width="512" height="512" rx="96" fill="#0f766e"/>
+  <rect x="112" y="124" width="288" height="264" rx="32" fill="#ffffff"/>
+  <path d="M156 190h200" stroke="#0f766e" stroke-width="24" stroke-linecap="round"/>
+  <path d="M156 252h200" stroke="#0f766e" stroke-width="24" stroke-linecap="round"/>
+  <path d="M156 314h112" stroke="#0f766e" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="332" cy="318" r="34" fill="#f59e0b"/>
+  <path d="M332 286v64M300 318h64" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+</svg>

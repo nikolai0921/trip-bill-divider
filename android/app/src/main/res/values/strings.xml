@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">輕量版生活費用分攤器</string>
+    <string name="title_activity_main">輕量版生活費用分攤器</string>
+    <string name="package_name">tw.splitwise.minimalist</string>
+    <string name="custom_url_scheme">tw.splitwise.minimalist</string>
+</resources>
