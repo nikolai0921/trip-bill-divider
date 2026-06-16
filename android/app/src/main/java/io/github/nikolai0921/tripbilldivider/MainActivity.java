@@ -1,4 +1,4 @@
-package tw.splitwise.minimalist;
+package io.github.nikolai0921.tripbilldivider;
 
 import com.getcapacitor.BridgeActivity;
 

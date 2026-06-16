@@ -17,7 +17,7 @@
 ## Google Play
 
 - 建立 Google Play Console 開發者帳號。
-- 準備正式 App ID，例如 `tw.splitwise.minimalist`。
+- 準備正式 App ID，目前設定為 `io.github.nikolai0921.tripbilldivider`。
 - 安裝 Android Studio。
 - 執行：
 
@@ -29,6 +29,7 @@ npm run cap:open:android
 ```
 
 - 在 Android Studio 產生 signed Android App Bundle (`.aab`)。
+- 正式上架前需要建立 upload key，並在 `android/keystore.properties` 指向本機 keystore；不要把 keystore 或密碼提交到 GitHub。
 - Play Console 需要準備：
   - App 名稱
   - 短描述與完整描述

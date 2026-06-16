@@ -1,5 +1,5 @@
 {
-  "name": "splitwise-minimalist",
+  "name": "trip-bill-divider",
   "version": "0.1.0",
   "private": true,
   "description": "輕量版生活費用分攤器，支援 PWA 與 Capacitor 手機 App 打包。",

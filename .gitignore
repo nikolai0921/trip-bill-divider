@@ -7,6 +7,10 @@ Thumbs.db
 android/.gradle/
 android/**/build/
 android/local.properties
+android/keystore.properties
+android/upload-keystore.jks
+android/*.jks
+android/*.keystore
 
 ios/App/build/
 ios/App/Pods/

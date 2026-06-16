@@ -76,3 +76,5 @@ npm run cap:open:ios
 Android 需要 Android Studio；iOS 需要 macOS 與 Xcode。
 
 詳細上架清單請看 `STORE_SUBMISSION_CHECKLIST.md`。
+
+Android 發布細節請看 `ANDROID_RELEASE.md`。

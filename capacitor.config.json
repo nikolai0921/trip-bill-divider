@@ -1,5 +1,5 @@
 {
-  "appId": "tw.splitwise.minimalist",
+  "appId": "io.github.nikolai0921.tripbilldivider",
   "appName": "輕量版生活費用分攤器",
   "webDir": "www",
   "bundledWebRuntime": false,
