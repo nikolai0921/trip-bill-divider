@@ -36,9 +36,12 @@ npm run cap:open:android
   - 圖示
   - 手機截圖
   - 隱私權政策網址
-  - Data Safety 表單
-  - 內容分級問卷
-  - 測試軌與正式版發布設定
+- Data Safety 表單
+- 內容分級問卷
+- 測試軌與正式版發布設定
+- Data Safety 填寫草稿請看 `GOOGLE_PLAY_DATA_SAFETY.md`
+- 封閉測試計畫請看 `CLOSED_TESTING_PLAN.md`
+- 多語言商店文案請看 `STORE_LOCALIZATION_PACK.md`
 
 ## iOS App Store
 

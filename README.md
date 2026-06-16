@@ -78,3 +78,10 @@ Android 需要 Android Studio；iOS 需要 macOS 與 Xcode。
 詳細上架清單請看 `STORE_SUBMISSION_CHECKLIST.md`。
 
 Android 發布細節請看 `ANDROID_RELEASE.md`。
+
+Google Play 上架資料：
+
+- `GOOGLE_PLAY_DATA_SAFETY.md`
+- `CLOSED_TESTING_PLAN.md`
+- `STORE_LOCALIZATION_PACK.md`
+- `APP_LOCALIZATION_PLAN.md`
