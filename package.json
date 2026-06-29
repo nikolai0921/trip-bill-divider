@@ -12,7 +12,9 @@
     "cap:add:ios": "npm run prepare:capacitor && npx cap add ios",
     "cap:sync": "npm run prepare:capacitor && npx cap sync",
     "cap:open:android": "npx cap open android",
-    "cap:open:ios": "npx cap open ios"
+    "cap:open:ios": "npx cap open ios",
+    "android:create-key": "powershell -ExecutionPolicy Bypass -File scripts/create-upload-keystore.ps1",
+    "android:bundle": "powershell -ExecutionPolicy Bypass -File scripts/build-signed-aab.ps1"
   },
   "dependencies": {
     "@capacitor/core": "^8.0.0"

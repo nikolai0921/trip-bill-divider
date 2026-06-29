@@ -21,17 +21,10 @@ android/app/build/outputs/bundle/release/app-release.aab
 
 ## 1. 建立 upload key
 
-在專案根目錄執行，並自行設定安全密碼：
+建議使用已準備好的安全腳本，會提示你輸入密碼：
 
 ```powershell
-keytool -genkeypair `
-  -v `
-  -keystore android/upload-keystore.jks `
-  -storetype JKS `
-  -keyalg RSA `
-  -keysize 2048 `
-  -validity 10000 `
-  -alias upload
+npm run android:create-key
 ```
 
 請妥善保存：
@@ -45,7 +38,7 @@ keytool -genkeypair `
 
 ## 2. 建立本機 keystore 設定
 
-建立 `android/keystore.properties`：
+上述腳本會自動建立 `android/keystore.properties`：
 
 ```properties
 storeFile=upload-keystore.jks
@@ -59,16 +52,14 @@ keyPassword=你的_key_密碼
 ## 3. 產生正式 AAB
 
 ```powershell
-$env:JAVA_HOME='C:\Program Files\Android\Android Studio\jbr'
-$env:Path="$env:JAVA_HOME\bin;$env:Path"
-cd android
-.\gradlew.bat bundleRelease
+npm run android:bundle
 ```
 
 輸出檔：
 
 ```text
 android/app/build/outputs/bundle/release/app-release.aab
+release/android/trip-bill-divider-1.0.0.aab
 ```
 
 ## 4. Google Play Console
