@@ -20,10 +20,16 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
+  overflow-x: hidden;
 }
 
 button,
@@ -146,6 +152,7 @@ h3 {
   border-radius: 8px;
   background: #fff;
   color: var(--ink);
+  font-size: 1rem;
   padding: 10px 12px;
   outline: none;
 }
@@ -585,5 +592,80 @@ h3 {
 
   .settlement-actions .icon-button {
     flex: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(100% - 16px, 620px);
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .panel-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .member-main,
+  .expense-main {
+    display: grid;
+  }
+
+  .row-actions {
+    flex-wrap: wrap;
+    justify-content: stretch;
+  }
+
+  .row-actions .icon-button {
+    flex: 1;
+  }
+
+  .segmented-control {
+    grid-template-columns: 1fr;
+  }
+
+  .split-box-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .mobile-tabs {
+    gap: 4px;
+  }
+
+  .tab-button {
+    font-size: 0.86rem;
+    min-height: 40px;
+    padding: 7px 4px;
+  }
+
+  .privacy-note,
+  .expense-meta,
+  .settlement-meta,
+  .muted {
+    line-height: 1.55;
+  }
+
+  .toast {
+    width: min(100% - 24px, 420px);
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.42rem;
+  }
+
+  .primary-button,
+  .ghost-button,
+  .icon-button,
+  .ghost-link {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
