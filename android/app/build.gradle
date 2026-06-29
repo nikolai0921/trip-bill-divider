@@ -8,6 +8,20 @@ if (hasReleaseKeystore) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
+def keystoreValue = { key ->
+    return keystoreProperties.getProperty(key) ?: keystoreProperties.getProperty("\uFEFF${key}")
+}
+
+def releaseStoreFile = keystoreValue('storeFile')
+def releaseStorePassword = keystoreValue('storePassword')
+def releaseKeyAlias = keystoreValue('keyAlias')
+def releaseKeyPassword = keystoreValue('keyPassword')
+def hasCompleteReleaseKeystore = hasReleaseKeystore &&
+    releaseStoreFile &&
+    releaseStorePassword &&
+    releaseKeyAlias &&
+    releaseKeyPassword
+
 android {
     namespace = "io.github.nikolai0921.tripbilldivider"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -25,19 +39,19 @@ android {
         }
     }
     signingConfigs {
-        if (hasReleaseKeystore) {
+        if (hasCompleteReleaseKeystore) {
             release {
-                storeFile file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
+                storeFile rootProject.file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
             }
         }
     }
     buildTypes {
         release {
             minifyEnabled false
-            if (hasReleaseKeystore) {
+            if (hasCompleteReleaseKeystore) {
                 signingConfig signingConfigs.release
             }
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

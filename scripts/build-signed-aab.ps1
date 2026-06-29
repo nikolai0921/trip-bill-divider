@@ -21,18 +21,26 @@ if (Test-Path $androidStudioJbr) {
 Push-Location $root
 try {
   npm run cap:sync
-} finally {
-  Pop-Location
-}
-
-Push-Location $androidDir
-try {
-  .\gradlew.bat bundleRelease
+  if ($LASTEXITCODE -ne 0) {
+    throw "npm run cap:sync failed with exit code $LASTEXITCODE"
+  }
 } finally {
   Pop-Location
 }
 
 $source = Join-Path $androidDir "app\build\outputs\bundle\release\app-release.aab"
+Remove-Item -Path $source -Force -ErrorAction SilentlyContinue
+
+Push-Location $androidDir
+try {
+  .\gradlew.bat bundleRelease
+  if ($LASTEXITCODE -ne 0) {
+    throw "Gradle bundleRelease failed with exit code $LASTEXITCODE"
+  }
+} finally {
+  Pop-Location
+}
+
 if (-not (Test-Path $source)) {
   throw "Release AAB was not created: $source"
 }

@@ -71,7 +71,7 @@ storePassword=$storePassword
 keyAlias=$Alias
 keyPassword=$keyPassword
 "@
-  Set-Content -Path $propertiesPath -Value $properties -Encoding UTF8
+  [System.IO.File]::WriteAllText($propertiesPath, $properties, [System.Text.UTF8Encoding]::new($false))
 } finally {
   Remove-Item Env:\TRIP_BILL_STORE_PASSWORD -ErrorAction SilentlyContinue
   Remove-Item Env:\TRIP_BILL_KEY_PASSWORD -ErrorAction SilentlyContinue
